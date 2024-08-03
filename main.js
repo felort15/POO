@@ -34,3 +34,40 @@ class Student {
   
   juanita.aprobarCurso("Curso de programación en JavaScript");
   console.log(juanita.cursosAprobados); // ["Curso de programación en JavaScript"]
+
+  class Student2 {
+    constructor({
+      name,
+      cursosAprobados = [],
+      age,
+      email,
+    }) {
+      this.name = name;
+      this.email = email;
+      this.age = age;
+      this.cursosAprobados = cursosAprobados;
+    }
+  
+    aprobarCurso(nuevoCursito) {
+      this.cursosAprobados.push(nuevoCursito);
+    }
+  }
+  
+  const miguelito = new Student2({
+    name: "Miguel",
+    age: 28,
+    email: "miguelito@platzi.com",
+  });
+  
+  console.log(miguelito);
+  // Output:
+  // Student2 {
+  //   name: 'Miguel',
+  //   email: 'miguelito@platzi.com',
+  //   age: 28,
+  //   cursosAprobados: []
+  // }
+  
+  miguelito.aprobarCurso("Curso de JavaScript");
+  console.log(miguelito.cursosAprobados);
+  // Output: ["Curso de JavaScript"]
