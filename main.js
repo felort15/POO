@@ -71,3 +71,5 @@ class Student {
   miguelito.aprobarCurso("Curso de JavaScript");
   console.log(miguelito.cursosAprobados);
   // Output: ["Curso de JavaScript"]
+
+ 
