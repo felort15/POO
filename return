@@ -1,0 +1,141 @@
+[33mcommit 14eface769624dacbe1e0adba13e333e5f3c3476[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Fri Aug 2 21:11:02 2024 -0600
+
+    Ventajs de POO
+
+[33mcommit 5caf965a7ed8b0568bcb5762e1ceffa7c36cd2dd[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Fri Aug 2 20:38:46 2024 -0600
+
+    Clases de JS
+
+[33mcommit f7b9485901f96a12a14fbbcfcf36c1aee2bc90bb[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Fri Aug 2 20:17:57 2024 -0600
+
+    Objetos literales y prototipos
+
+[33mcommit b523a292f8deafb3eb5250ce5caad0aad3f7534f[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Thu Aug 1 20:49:59 2024 -0600
+
+    Crear Objeto
+
+[33mcommit 0e4e9b4ececb3caa40ca738205b2c039855dd0cc[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Thu Aug 1 20:06:52 2024 -0600
+
+    Change
+
+[33mcommit 86fc50093864de158d59b4caaa4aaa2c341e2f6c[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Wed Jul 31 20:10:25 2024 -0600
+
+    Primer commit
+[33mcommit 14eface769624dacbe1e0adba13e333e5f3c3476[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Felipe Ortiz <felort15@gmail.com>
+Date:   Fri Aug 2 21:11:02 2024 -0600
+
+    Ventajs de POO
+
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 5958d2b..070bfc3 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -8,5 +8,6 @@[m
+ </head>[m
+ <body>[m
+   <script src="./main.js"></script>[m
+[32m+[m[32m  <script src="learningPath.js"></script>[m
+ </body>[m
+ </html>[m
+\ No newline at end of file[m
+[1mdiff --git a/learningPath.js b/learningPath.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..371eba3[m
+[1m--- /dev/null[m
+[1m+++ b/learningPath.js[m
+[36m@@ -0,0 +1,67 @@[m
+[32m+[m[32mclass LearningPath {}[m
+[32m+[m
+[32m+[m[32mconst escuelaWeb = new LearningPath();[m
+[32m+[m[32mconst escuelaData = new LearningPath();[m
+[32m+[m[32mconst escuelaVgs = new LearningPath();[m
+[32m+[m
+[32m+[m[32mclass Student3 {[m
+[32m+[m[32m  constructor({[m
+[32m+[m[32m    name,[m
+[32m+[m[32m    email,[m
+[32m+[m[32m    username,[m
+[32m+[m[32m    twitter = undefined,[m
+[32m+[m[32m    instagram = undefined,[m
+[32m+[m[32m    facebook = undefined,[m
+[32m+[m[32m    approvedCourses = [],[m
+[32m+[m[32m    learningPaths = [],[m
+[32m+[m[32m  }) {[m
+[32m+[m[32m    this.name = name;[m
+[32m+[m[32m    this.email = email;[m
+[32m+[m[32m    this.username = username;[m
+[32m+[m[32m    this.socialMedia = {[m
+[32m+[m[32m      twitter,[m
+[32m+[m[32m      instagram,[m
+[32m+[m[32m      facebook,[m
+[32m+[m[32m    };[m
+[32m+[m[32m    this.approvedCourses = approvedCourses;[m
+[32m+[m[32m    this.learningPaths = learningPaths;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mconst juan2 = new Student({[m
+[32m+[m[32m  name: "JuanDC",[m
+[32m+[m[32m  username: "juandc",[m
+[32m+[m[32m  email: "juanito@juanito.com",[m
+[32m+[m[32m  twitter: "fjuandc",[m
+[32m+[m[32m  learningPaths: [escuelaWeb, escuelaVgs],[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mconst miguelito2 = new Student({[m
+[32m+[m[32m  name: "Miguelito",[m
+[32m+[m[32m  username: "migelitofeliz",[m
+[32m+[m[32m  email: "miguelito@juanito.com",[m
+[32m+[m[32m  instagram: "migelito_feliz",[m
+[32m+[m[32m  learningPaths: [escuelaWeb, escuelaData],[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mconsole.log(juan2);[m
+[32m+[m[32m// Output:[m
+[32m+[m[32m// Student {[m
+[32m+[m[32m//   name: 'JuanDC',[m
+[32m+[m[32m//   email: 'juanito@juanito.com',[m
+[32m+[m[32m//   username: 'juandc',[m
+[32m+[m[32m//   socialMedia: { twitter: 'fjuandc', instagram: undefined, facebook: undefined },[m
+[32m+[m[32m//   approvedCourses: [],[m
+[32m+[m[32m//   learningPaths: [ LearningPath {}, LearningPath {} ][m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32mconsole.log(miguelito2);[m
+[32m+[m[32m// Output:[m
+[32m+[m[32m// Student {[m
+[32m+[m[32m//   name: 'Miguelito',[m
+[32m+[m[32m//   email: 'miguelito@juanito.com',[m
+[32m+[m[32m//   username: 'migelitofeliz',[m
+[32m+[m[32m//   socialMedia: { twitter: undefined, instagram: 'migelito_feliz', facebook: undefined },[m
+[32m+[m[32m//   approvedCourses: [],[m
+[32m+[m[32m//   learningPaths: [ LearningPath {}, LearningPath {} ][m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/main.js b/main.js[m
+[1mindex 7150545..8c88a21 100644[m
+[1m--- a/main.js[m
+[1m+++ b/main.js[m
+[36m@@ -70,4 +70,6 @@[m [mclass Student {[m
+   [m
+   miguelito.aprobarCurso("Curso de JavaScript");[m
+   console.log(miguelito.cursosAprobados);[m
+[31m-  // Output: ["Curso de JavaScript"][m
+\ No newline at end of file[m
+[32m+[m[32m  // Output: ["Curso de JavaScript"][m
+[41m+[m
+[41m+ [m
+\ No newline at end of file[m
