@@ -1,16 +1,26 @@
 class Student {
-    constructor(name, age, course, specialization) {
-      this.name = name;
-      this.age = age;
-      this.course = course;
-      this.specialization = specialization;
-      this.cursosAprobados = []; // initialize the array
-    }
-  
-    aprobarCurso(nuevoCursito) {
-      this.cursosAprobados.push(nuevoCursito);
-    }
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = { twitter, instagram, facebook };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
   }
+
+  aprobarCurso(nuevoCursito) {
+    this.approvedCourses.push(nuevoCursito);
+  }
+}
   
   const natalia = new Student(
     "Natalia",
@@ -19,7 +29,7 @@ class Student {
     "Diseño de interfaces de usuario"
   );
   
-  natalia.cursosAprobados.push("Curso de Responsive Design");
+  natalia.approvedCourses.push("Curso de Responsive Design");
   natalia.aprobarCurso("Curso de diseño de interfaces de usuario con CSS");
   
   console.log(natalia.cursosAprobados); 
