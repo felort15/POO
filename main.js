@@ -1,21 +1,50 @@
-class Course {
-  constructor({ name, classes = [] }) {
-    this._name = name;
-    this.classes = classes;
-  }
 
-  get name() {
-    return this._name;
+  function videoPlay(id) {
+    const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
+    console.log("Se está reproduciendo desde la url " + urlSecreta);
   }
-
-  set name(nuevoNombrecito) {
-    if (nuevoNombrecito === "Curso Malito de Programación Básica") {
-      console.error("Web... no");
-    } else {
-      this._name = nuevoNombrecito;
+  function videoStop(id) {
+    const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
+    console.log("Pausamos la url " + urlSecreta);
+  }
+  
+  export class PlatziClass {
+    constructor({
+      name,
+      videoID,
+    }) {
+      this.name = name;
+      this.videoID = videoID;
+    }
+  
+    reproducir() {
+      videoPlay(this.videoID);
+    }
+    pausar() {
+      videoStop(this.videoID);
     }
   }
-}
+
+  class Course {
+    constructor({ name, classes = [] }) {
+      this._name = name;
+      this.classes = classes;
+    }
+  
+    get name() {
+      return this._name;
+    }
+  
+    set name(newValue) {
+      if (newValue === "Curso Malito de Programación Básica") {
+        console.error("Web... no");
+      } else {
+        this._name = newValue;
+      }
+    }
+  }
+  
+
 
 class LearningPath {
   constructor({ name, courses = [] }) {
