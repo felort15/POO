@@ -110,20 +110,46 @@ escuelaVgs.addCourse(cursoProgBasica);
 escuelaVgs.addCourse("Curso de Unity");
 escuelaVgs.addCourse("Curso de Unreal");
 
-const juan2 = new Student({
-  name: "JuanDC",
-  username: "juandc",
-  email: "juanito@juanito.com",
-  twitter: "fjuandc",
-});
-juan2.addLearningPath(escuelaWeb);
-juan2.addLearningPath(escuelaVgs);
 
-const miguelito2 = new Student({
-  name: "Miguelito",
-  username: "migelitofeliz",
-  email: "miguelito@juanito.com",
-  instagram: "migelito_feliz",
+class FreeStudent extends Student {
+  constructor(props){super(props);
+
+  }
+approveCourse(newCourse){
+  if(newCourse.isFree){
+    this.approvedCourses.push(newCourse);
+  }
+  else{console.warn("Lo sentimos, "+this.name+", solo puedes tomar cursos abiertos");}
+ }
+}
+class BasicStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+approveCourse(newCourse) {
+  if(newCourse.lang!=="english") {
+    this.approvedCourses.push(newCourse);
+  }
+  else{console.warn("Lo sentimos, "+this.name+", no puedes tomar cursos en inglés");}
+  }
+}
+class ExpertStudent extends Student
+{constructor(props){super(props);}
+approveCourse(newCourse){this.approvedCourses.push(newCourse);
+
+}
+}
+const juan=new FreeStudent({
+  name:"JuanDC",
+  username:"juandc"
+  ,email:"juanito@juanito.com",
+  twitter:"fjuandc",
+  learningPaths:[escuelaWeb,escuelaVgs,],
 });
-miguelito2.addLearningPath(escuelaWeb);
-miguelito2.addLearningPath(escuelaData);
+const miguelito=new BasicStudent({
+  name:"Miguelito",
+  username:"migelitofeliz",
+  email:"miguelito@juanito.com",
+  instagram:"migelito_feliz",
+  learningPaths:[escuelaWeb,escuelaData,],
+});
