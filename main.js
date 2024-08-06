@@ -13,6 +13,9 @@
       name,
       videoID,
     }) {
+      if (typeof videoID !== 'string' || videoID.trim() === '') {
+        throw new Error('Invalid videoID');
+      }
       this.name = name;
       this.videoID = videoID;
     }
