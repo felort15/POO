@@ -1,3 +1,6 @@
 {
-    "git.ignoreLimitWarning": true
-}
+    "workbench.colorCustomizations": {
+        "activityBar.activeBorder": "#f1fce2"
+    },
+    "peacock.color": "#ed62b0"
+  }
