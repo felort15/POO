@@ -1,25 +1,61 @@
 class Course {
-  constructor({ name }) {
-    this.name = name;
-    this.classes = [];
+  constructor({ name, classes = [] }) {
+    this._name = name;
+    this.classes = classes;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(nuevoNombrecito) {
+    if (nuevoNombrecito === "Curso Malito de Programación Básica") {
+      console.error("Web... no");
+    } else {
+      this._name = nuevoNombrecito;
+    }
   }
 }
 
 class LearningPath {
-  constructor({ name }) {
+  constructor({ name, courses = [] }) {
     this.name = name;
-    this.courses = [];
+    this.courses = courses;
+  }
+
+  addCourse(course) {
+    this.courses.push(course);
+  }
+
+  removeCourse(course) {
+    this.courses = this.courses.filter((c) => c !== course);
   }
 }
 
 class Student {
-  constructor({ name, email, username, twitter, instagram, facebook }) {
+  constructor({ name, email, username, twitter = undefined, instagram = undefined, facebook = undefined, approvedCourses = [], learningPaths = [] }) {
     this.name = name;
     this.email = email;
     this.username = username;
     this.socialMedia = { twitter, instagram, facebook };
-    this.approvedCourses = [];
-    this.learningPaths = [];
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+
+  addApprovedCourse(course) {
+    this.approvedCourses.push(course);
+  }
+
+  removeApprovedCourse(course) {
+    this.approvedCourses = this.approvedCourses.filter((c) => c !== course);
+  }
+
+  addLearningPath(learningPath) {
+    this.learningPaths.push(learningPath);
+  }
+
+  removeLearningPath(learningPath) {
+    this.learningPaths = this.learningPaths.filter((lp) => lp !== learningPath);
   }
 }
 
@@ -28,13 +64,19 @@ const cursoDefinitivoHTML = new Course({ name: "Curso Definitivo de HTML y CSS" 
 const cursoPracticoHTML = new Course({ name: "Curso Practico de HTML y CSS" });
 
 const escuelaWeb = new LearningPath({ name: "Escuela de Desarrollo Web" });
-escuelaWeb.courses = [cursoProgBasica, cursoDefinitivoHTML, cursoPracticoHTML];
+escuelaWeb.addCourse(cursoProgBasica);
+escuelaWeb.addCourse(cursoDefinitivoHTML);
+escuelaWeb.addCourse(cursoPracticoHTML);
 
 const escuelaData = new LearningPath({ name: "Escuela de Data Science" });
-escuelaData.courses = [cursoProgBasica, "Curso DataBusiness", "Curso Dataviz"];
+escuelaData.addCourse(cursoProgBasica);
+escuelaData.addCourse("Curso DataBusiness");
+escuelaData.addCourse("Curso Dataviz");
 
 const escuelaVgs = new LearningPath({ name: "Escuela de Vidweojuegos" });
-escuelaVgs.courses = [cursoProgBasica, "Curso de Unity", "Curso de Unreal"];
+escuelaVgs.addCourse(cursoProgBasica);
+escuelaVgs.addCourse("Curso de Unity");
+escuelaVgs.addCourse("Curso de Unreal");
 
 const juan2 = new Student({
   name: "JuanDC",
@@ -42,7 +84,8 @@ const juan2 = new Student({
   email: "juanito@juanito.com",
   twitter: "fjuandc",
 });
-juan2.learningPaths = [escuelaWeb, escuelaVgs];
+juan2.addLearningPath(escuelaWeb);
+juan2.addLearningPath(escuelaVgs);
 
 const miguelito2 = new Student({
   name: "Miguelito",
@@ -50,4 +93,5 @@ const miguelito2 = new Student({
   email: "miguelito@juanito.com",
   instagram: "migelito_feliz",
 });
-miguelito2.learningPaths = [escuelaWeb, escuelaData];
+miguelito2.addLearningPath(escuelaWeb);
+miguelito2.addLearningPath(escuelaData);
