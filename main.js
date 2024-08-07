@@ -64,32 +64,25 @@ class LearningPath {
   }
 }
 
-class Student {
-  constructor({ name, email, username, twitter = undefined, instagram = undefined, facebook = undefined, approvedCourses = [], learningPaths = [] }) {
-    this.name = name;
-    this.email = email;
-    this.username = username;
-    this.socialMedia = { twitter, instagram, facebook };
-    this.approvedCourses = approvedCourses;
-    this.learningPaths = learningPaths;
-  }
 
-  addApprovedCourse(course) {
+
+  addApprovedCourse(course);
     this.approvedCourses.push(course);
-  }
+  
 
-  removeApprovedCourse(course) {
+  removeApprovedCourse(course); 
     this.approvedCourses = this.approvedCourses.filter((c) => c !== course);
-  }
+  
 
-  addLearningPath(learningPath) {
+  addLearningPath(learningPath); 
     this.learningPaths.push(learningPath);
-  }
+  
 
-  removeLearningPath(learningPath) {
+  removeLearningPath(learningPath); 
     this.learningPaths = this.learningPaths.filter((lp) => lp !== learningPath);
-  }
-}
+  
+
+
 
 const cursoProgBasica = new Course({ name: "Curso Gratis de Programación Básica" });
 const cursoDefinitivoHTML = new Course({ name: "Curso Definitivo de HTML y CSS" });
@@ -109,6 +102,17 @@ const escuelaVgs = new LearningPath({ name: "Escuela de Vidweojuegos" });
 escuelaVgs.addCourse(cursoProgBasica);
 escuelaVgs.addCourse("Curso de Unity");
 escuelaVgs.addCourse("Curso de Unreal");
+
+class Student {
+  constructor({ name, email, username, twitter = undefined, instagram = undefined, facebook = undefined, approvedCourses = [], learningPaths = [] }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = { twitter, instagram, facebook };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+}
 
 
 class FreeStudent extends Student {
