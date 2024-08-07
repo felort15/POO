@@ -1,159 +1,177 @@
 
-  function videoPlay(id) {
-    const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
-    console.log("Se está reproduciendo desde la url " + urlSecreta);
-  }
-  function videoStop(id) {
-    const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
-    console.log("Pausamos la url " + urlSecreta);
-  }
-  
-  export class PlatziClass {
-    constructor({
-      name,
-      videoID,
-    }) {
-      if (typeof videoID !== 'string' || videoID.trim() === '') {
-        throw new Error('Invalid videoID');
-      }
-      this.name = name;
-      this.videoID = videoID;
+class Comment{
+  constructor({
+    content,
+    studentName,
+    studentRole="estudiante",}){
+      this.content=content;
+      this.studentName=studentName;
+      this.studentRole=studentRole;
+      this.likes=0;
     }
-  
-    reproducir() {
-      videoPlay(this.videoID);
-    }
-    pausar() {
-      videoStop(this.videoID);
-    }
-  }
-
-  class Course {
-    constructor({ name, classes = [] }) {
-      this._name = name;
-      this.classes = classes;
-    }
-  
-    get name() {
-      return this._name;
-    }
-  
-    set name(newValue) {
-      if (newValue === "Curso Malito de Programación Básica") {
-        console.error("Web... no");
-      } else {
-        this._name = newValue;
-      }
-    }
-  }
-  
-
-
-class LearningPath {
-  constructor({ name, courses = [] }) {
-    this.name = name;
-    this.courses = courses;
-  }
-
-  addCourse(course) {
-    this.courses.push(course);
-  }
-
-  removeCourse(course) {
-    this.courses = this.courses.filter((c) => c !== course);
-  }
+publicar(){
+  console.log(this.studentName+" ("+this.studentRole+")");
+  console.log(this.likes+" likes");console.log(this.content);}
 }
-
-
-
-  addApprovedCourse(course);
-    this.approvedCourses.push(course);
-  
-
-  removeApprovedCourse(course); 
-    this.approvedCourses = this.approvedCourses.filter((c) => c !== course);
-  
-
-  addLearningPath(learningPath); 
-    this.learningPaths.push(learningPath);
-  
-
-  removeLearningPath(learningPath); 
-    this.learningPaths = this.learningPaths.filter((lp) => lp !== learningPath);
-  
-
-
-
-const cursoProgBasica = new Course({ name: "Curso Gratis de Programación Básica" });
-const cursoDefinitivoHTML = new Course({ name: "Curso Definitivo de HTML y CSS" });
-const cursoPracticoHTML = new Course({ name: "Curso Practico de HTML y CSS" });
-
-const escuelaWeb = new LearningPath({ name: "Escuela de Desarrollo Web" });
-escuelaWeb.addCourse(cursoProgBasica);
-escuelaWeb.addCourse(cursoDefinitivoHTML);
-escuelaWeb.addCourse(cursoPracticoHTML);
-
-const escuelaData = new LearningPath({ name: "Escuela de Data Science" });
-escuelaData.addCourse(cursoProgBasica);
-escuelaData.addCourse("Curso DataBusiness");
-escuelaData.addCourse("Curso Dataviz");
-
-const escuelaVgs = new LearningPath({ name: "Escuela de Vidweojuegos" });
-escuelaVgs.addCourse(cursoProgBasica);
-escuelaVgs.addCourse("Curso de Unity");
-escuelaVgs.addCourse("Curso de Unreal");
-
-class Student {
-  constructor({ name, email, username, twitter = undefined, instagram = undefined, facebook = undefined, approvedCourses = [], learningPaths = [] }) {
-    this.name = name;
-    this.email = email;
-    this.username = username;
-    this.socialMedia = { twitter, instagram, facebook };
-    this.approvedCourses = approvedCourses;
-    this.learningPaths = learningPaths;
-  }
+function videoPlay(id){
+  const urlSecreta="https://platziultrasecretomasquelanasa.com/"+id;
+  console.log("Se está reproduciendo desde la url "+urlSecreta);}
+function videoStop(id){
+  const urlSecreta="https://platziultrasecretomasquelanasa.com/"+id;
+  console.log("Pausamos la url "+urlSecreta);
 }
-
-
-class FreeStudent extends Student {
+class PlatziClass{
+  constructor({name,videoID,}){
+    this.name=name;this.videoID=videoID;
+    this.comments=[];
+}
+reproducir(){
+  videoPlay(this.videoID);
+}
+pausar(){
+  videoStop(this.videoID);
+}}
+class Course{
+  constructor({
+    name,classes=[],
+    isFree=false,lang="spanish",}){
+      this._name=name;
+      this.classes=classes;
+      this.isFree=isFree;
+      this.lang=lang;
+    }
+get name(){
+  return this._name;
+}
+set name(nuevoNombrecito){
+  if(nuevoNombrecito==="Curso Malito de Programación Básica"){
+    console.error("Web... no");}else{this._name=nuevoNombrecito;
+      }}
+    }
+const cursoProgBasica=new Course({
+  name:"Curso Gratis de Programación Básica",
+  isFree:true,});
+  const cursoDefinitivoHTML=new Course({
+    name:"Curso Definitivo de HTML y CSS",
+  });
+  const cursoPracticoHTML=new Course({
+    name:"Curso Practico de HTML y CSS",
+    lang:"english",
+  });
+  class LearningPath{
+    constructor({name,courses=[],}){
+      this.name=name;this.courses=courses;
+  }}
+const escuelaWeb=new LearningPath({
+  name:"Escuela de Desarrollo Web",
+  courses:[cursoProgBasica,cursoDefinitivoHTML,cursoPracticoHTML,],
+});
+const escuelaData=new LearningPath({
+  name:"Escuela de Data Science",
+  courses:[cursoProgBasica,"Curso DataBusiness","Curso Dataviz",],
+});
+const escuelaVgs=new LearningPath({name:"Escuela de Vidweojuegos",
+  courses:[cursoProgBasica,"Curso de Unity","Curso de Unreal",],
+})
+class Student{
+  constructor({
+    name,email,
+    username,twitter=undefined,
+    instagram=undefined,
+    facebook=undefined,
+    approvedCourses=[],
+    learningPaths=[],}){
+      this.name=name;
+      this.email=email;
+      this.username=username;
+      this.socialMedia={
+        twitter,
+        instagram,
+        facebook,
+      };
+      this.approvedCourses=approvedCourses;
+      this.learningPaths=learningPaths;
+    }
+publicarComentario(commentContent){
+  const comment=new Comment({
+    content:commentContent,
+    studentName:this.name,});
+    comment.publicar();
+  }}
+class FreeStudent extends Student{
   constructor(props){super(props);
-
+    this.approvedCourses=[];
   }
 approveCourse(newCourse){
   if(newCourse.isFree){
     this.approvedCourses.push(newCourse);
   }
-  else{console.warn("Lo sentimos, "+this.name+", solo puedes tomar cursos abiertos");}
- }
+  else{
+    console.warn("Lo sentimos, "+this.name+", solo puedes tomar cursos abiertos");
+  }}
 }
-class BasicStudent extends Student {
-  constructor(props) {
-    super(props);
-  }
-approveCourse(newCourse) {
-  if(newCourse.lang!=="english") {
+
+  
+approveCourse(newCourse)
+  if(newCourse.lang!=="english"){
     this.approvedCourses.push(newCourse);
   }
-  else{console.warn("Lo sentimos, "+this.name+", no puedes tomar cursos en inglés");}
+    else{console.warn("Lo sentimos, "+this.name+", no puedes tomar cursos en inglés");
   }
-}
-class ExpertStudent extends Student
-{constructor(props){super(props);}
-approveCourse(newCourse){this.approvedCourses.push(newCourse);
+    
+class ExpertStudent extends Student{
+  constructor(props){super(props);
+    this.approvedCourses=[];
+  }
+approveCourse(newCourse){
+  this.approvedCourses.push(newCourse);
+}}
+class TeacherStudent extends Student{
+  constructor(props){super(props);
 
+  }
+approveCourse(newCourse){
+  this.approvedCourses.push(newCourse);
 }
-}
+publicarComentario(commentContent){
+  const comment=new Comment({
+    content:commentContent,
+    studentName:this.
+    name,
+    studentRole:"profesor",
+  });comment.publicar();
+}}
 const juan=new FreeStudent({
   name:"JuanDC",
-  username:"juandc"
-  ,email:"juanito@juanito.com",
+  username:"juandc",
+  email:"juanito@juanito.com",
   twitter:"fjuandc",
   learningPaths:[escuelaWeb,escuelaVgs,],
 });
-const miguelito=new BasicStudent({
-  name:"Miguelito",
-  username:"migelitofeliz",
-  email:"miguelito@juanito.com",
-  instagram:"migelito_feliz",
-  learningPaths:[escuelaWeb,escuelaData,],
-});
+class BasicStudent extends Student{
+  constructor(props){super(props);
+    this.approvedCourses=[];
+  }}
+    const miguelito=new BasicStudent({
+      name:"Miguelito",
+      username:"migelitofeliz",
+      email:"miguelito@juanito.com",
+      instagram:"migelito_feliz",
+      learningPaths:[escuelaWeb,escuelaData,],
+    });
+     
+
+    const freddy=new TeacherStudent({
+      name:"Freddy Vega",
+      username:"freddier",
+      email:"f@gep.com",
+      instagram:"freddiervega",
+    });
+    
+      const juanito = new ExpertStudent({
+        name: "Juan",
+        username: "juanito",
+        email: "juanito@juanito.com",
+        twitter: "juanito",
+        learningPaths: [escuelaWeb, escuelaVgs, escuelaData],
+      })
